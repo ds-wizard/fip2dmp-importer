@@ -1,0 +1,98 @@
+html, body {
+    width: 100%;
+}
+
+.container {
+    padding: 1em;
+}
+
+#fip2dmp-form {
+    position: relative;
+}
+
+#fip-items {
+    border-radius: .375rem;
+    background: #fff;
+    position: absolute;
+    width: 100%;
+    border: 1px solid #ced4da;
+    z-index: 10;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-height: 350px;
+    overflow: auto;
+}
+
+.fip-item {
+    padding: 0.5rem;
+    border-bottom: 1px solid #ced4da;
+    cursor: pointer;
+}
+.fip-item:hover {
+    background-color: #ced4da;
+}
+.fip-item:last-of-type {
+    border-bottom: 0;
+}
+.fip-item .fip-item-title {
+    font-weight: bold;
+}
+.fip-item .fip-item-package {
+    font-family: monospace;
+}
+.fit-item .fip-item-description {
+    font-size: 80%;
+    font-style: italic;
+}
+.fip-no-item,
+.fip-loading-item,
+.fip-error-item {
+    color: gray;
+    font-style: italic;
+    cursor: not-allowed;
+}
+.fip-loading-item .fip-loader {
+    margin-left: 0.2em;
+    margin-right: 0.4em;
+}
+.fip-error-item {
+    color: var(--bs-danger);
+}
+
+#fip2dmp-importing {
+    text-align: center;
+}
+#fip2dmp-importing .spinner-border {
+    margin: 1em;
+    width: 5rem;
+    height: 5rem;
+}
+
+#fip2dmp-error {
+    text-align: center;
+}
+#fip2dmp-error .error-sign {
+    color: var(--bs-primary);
+    font-size: 600%;
+    font-weight: bold;
+}
+
+.hide {
+    display: none;
+}
+
+.debug {
+    display: none;
+}
+
+.debug .form-check {
+    margin: 0;
+    padding: 0;
+}
+
+.debug .form-check .form-check-input {
+    margin-left: 0;
+}
+
+.debug .form-check .form-check-label {
+    margin-left: 1em;
+}

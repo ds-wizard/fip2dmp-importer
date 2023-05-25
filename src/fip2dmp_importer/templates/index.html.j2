@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>FIP-to-DMP Importer</title>
+        <link rel="icon" type="image/png" href="{{ url_for('static', path='/favicon.png') }}" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+              rel="stylesheet"
+              integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+              crossorigin="anonymous">
+        <link href="{{ url_for('static', path='/styles.css') }}"
+              rel="stylesheet">
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+                crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+                integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
+                crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/@ds-wizard/importer-sdk/lib/index.js"></script>
+        {% if development %}
+        <script>
+            window.opener = {
+                postMessage: () => {
+                    window.postMessage({
+                        type: 'ready',
+                        origin: '',
+                        styleUrl: 'https://s3.ds-wizard.org/dsw-server-app/17032b53-f4da-47bb-972c-ea82176422eb/public/customization.6595603168296135982.css',
+                        knowledgeModel: '{}',
+                    })
+                }
+            }
+        </script>
+        {% endif %}
+        <script src="{{ url_for('static', path='/script.js') }}"></script>
+    </head>
+    <body>
+        <div class="container">
+            {% if debug %}
+            <div class="debug">
+                <div class="alert alert-secondary" role="alert">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="debug-checkbox">
+                        <label class="form-check-label" for="debug-checkbox">enable debugging</label>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+            <h1>FIP-to-DMP Importer</h1>
+
+            <div id="fip2dmp-select" class="">
+                <p>Select a FAIR Implementation Profile (FIP) that you want to use to pre-populate your DMP.</p>
+
+                <div id="fip2dmp-filters">
+
+                </div>
+                <div id="fip2dmp-form">
+                    <input id="fip-input" class="form-control" type="text" placeholder="Start typing FIP name...">
+                    <div id="fip-items" class="hide"></div>
+                </div>
+            </div>
+            <div id="fip2dmp-importing" class="hide">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+                <p>The FIP is being prepared for import... You will be redirected shortly.</p>
+            </div>
+            <div id="fip2dmp-error" class="hide">
+                <div class="error-sign">×</div>
+                <p>Unfortunately, mapping the selected FIP to DMP failed...</p>
+                <button class="btn btn-primary" id="btn-reset">Reset</button>
+            </div>
+        </div>
+    </body>
+</html>
