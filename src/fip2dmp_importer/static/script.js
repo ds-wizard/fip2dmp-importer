@@ -1,4 +1,4 @@
-const importer = new DSWImporter()
+const importer = new dsw.Importer()
 
 let selected = null;
 let fips = [];
